@@ -1,24 +1,22 @@
-class Solution(object):
+class Solution:
 
     def isAnagram(self, s: str, t: str) -> bool:
-        occurences = {}
+        occurrences = {}
 
         for ch in s:
-            if not ch in occurences:
-                occurences[ch] = 1
+            if ch not in occurrences:
+                occurrences[ch] = 1
             else:
-                occurences[ch] += 1
+                occurrences[ch] += 1
 
         for ch in t:
-            if not ch in occurences:
+            if ch not in occurrences:
                 return False
             else:
-                occurences[ch] -= 1
+                occurrences[ch] -= 1
 
-        for value in occurences.values():
+        for value in occurrences.values():
             if value != 0:
                 return False
 
         return True
-
-print(Solution().isAnagram("abc", "acb"))
